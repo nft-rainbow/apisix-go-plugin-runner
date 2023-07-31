@@ -106,10 +106,13 @@ func (cc *ConfCache) Set(req *pc.Req) (uint32, error) {
 				continue
 			}
 
+			log.Infof("append conf entry for plugin %s, value %v", name, conf)
+
 			entries = append(entries, ConfEntry{
 				Name:  name,
 				Value: conf,
 			})
+
 		}
 	}
 

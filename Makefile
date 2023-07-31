@@ -38,6 +38,12 @@ build:
 	go build $(GO_BUILD_FLAGS) -ldflags $(GO_LDFLAGS) && \
 	mv go-runner ../..
 
+.PHONY: build-linux
+build-linux:
+	cd cmd/go-runner && \
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build && \
+	mv go-runner ../..
+
 .PHONY: lint
 lint:
 	golangci-lint run --verbose ./...
